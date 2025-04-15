@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Delight - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF4081',
+                        secondary: '#FF80AB',
+                        background: '#FFF0F6',
+                        dark: '#4A154B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-dark">
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-5 bg-primary text-white shadow-md">
+        <h1 class="text-2xl font-bold">Cake Delight</h1>
+        <ul class="flex gap-6">
+            <li><a href="#" class="hover:text-secondary transition">Home</a></li>
+            <li><a href="#cakes" class="hover:text-secondary transition">Cakes</a></li>
+            <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="flex flex-col md:flex-row items-center justify-center py-20 px-5 text-center">
+        <div class="md:w-1/2 fade-in">
+            <h2 class="text-4xl font-bold text-primary">Delicious Cakes Made with Love</h2>
+            <p class="mt-4 text-lg text-gray-700">Order your favorite cakes for any occasion.</p>
+            <button class="mt-5 bg-secondary text-white py-2 px-4 rounded-lg hover:bg-primary transition">Order Now</button>
+        </div>
+        <img src="11.png" alt="Cake" class="md:w-1/2">
+    </section>
+
+    <!-- Cakes Section -->
+    <section id="cakes" class="py-10 px-5">
+        <h2 class="text-3xl text-center font-bold text-primary">Our Best Cakes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+            <div class="bg-white shadow-lg rounded-lg p-5 text-center fade-in">
+                <img src="3.jpg" class="rounded-md" alt="Chocolate Cake">
+                <h3 class="text-xl font-semibold mt-4">Chocolate Cake</h3>
+                <p class="text-gray-600">Rich and creamy chocolate delight.</p>
+                <p class="text-lg font-bold text-primary mt-2">$20</p>
+                <button onclick="orderNow('Chocolate Cake')" class="mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition">Order Now</button>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-5 text-center fade-in">
+                <img src="2.jpg" class="rounded-md" alt="Strawberry Cake">
+                <h3 class="text-xl font-semibold mt-4">Strawberry Cake</h3>
+                <p class="text-gray-600">A fruity treat for every occasion.</p>
+                <p class="text-lg font-bold text-primary mt-2">$20</p>
+                <button onclick="orderNow('Chocolate Cake')" class="mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition">Order Now</button>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-5 text-center fade-in">
+                <img src="1.jpg" class="rounded-md" alt="Vanilla Cake">
+                <h3 class="text-xl font-semibold mt-4">Vanilla Cake</h3>
+                <p class="text-gray-600">Simple yet elegant vanilla taste.</p>
+                <p class="text-lg font-bold text-primary mt-2">$20</p>
+                <button onclick="orderNow('Chocolate Cake')" class="mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-secondary transition">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-10 px-5 text-center">
+        <h2 class="text-3xl font-bold text-primary">Get in Touch</h2>
+        <form class="mt-6 max-w-lg mx-auto bg-white p-5 shadow-lg rounded-lg fade-in">
+            <input type="text" id="name" placeholder="Your Name" class="w-full p-3 border rounded-lg mb-4" required>
+            <input type="email" id="email" placeholder="Your Email" class="w-full p-3 border rounded-lg mb-4" required>
+            <textarea id="message" rows="4" placeholder="Your Message" class="w-full p-3 border rounded-lg mb-4" required></textarea>
+            <button type="submit" class="bg-secondary text-white py-2 px-4 rounded-lg hover:bg-primary transition">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-4">
+        <p>&copy; 2025 Cake Delight. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Reveal animation on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
